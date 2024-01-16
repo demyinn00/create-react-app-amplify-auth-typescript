@@ -1,0 +1,13 @@
+type Task @model {
+  id: ID!
+  title: String!
+  description: String
+  status: TaskStatus!
+  dueDate: AWSDate
+}
+
+enum TaskStatus {
+  PENDING
+  IN_PROGRESS
+  COMPLETED
+}
