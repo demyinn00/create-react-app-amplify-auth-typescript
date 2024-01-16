@@ -10,6 +10,7 @@ import {
   View,
 } from "@aws-amplify/ui-react";
 import aws_exports from "./aws-exports";
+import TaskList from "./components/TaskList";
 
 import "@aws-amplify/ui-react/styles.css";
 import theme from "./theme";
@@ -36,12 +37,15 @@ const App = () => {
             </View>
 
             {user && (
-              <View width="100%">
-                <Text>Hello {user.username}</Text>
-                <Button onClick={signOut}>
-                  <Text>Sign Out</Text>
-                </Button>
-              </View>
+              <>
+                <View width="100%">
+                  <Text>Hello {user.username}</Text>
+                  <Button onClick={signOut}>
+                    <Text>Sign Out</Text>
+                  </Button>
+                </View>
+                <TaskList />
+              </>
             )}
 
             <View width="100%">
