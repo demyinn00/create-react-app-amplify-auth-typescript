@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Amplify } from "aws-amplify";
 import {
   AmplifyProvider,
@@ -10,7 +10,14 @@ import {
   View,
 } from "@aws-amplify/ui-react";
 import aws_exports from "./aws-exports";
+import { API, graphqlOperation } from "aws-amplify";
+import { listTasks } from "./graphql/queries";
+import { Task } from './API';
 import TaskList from "./components/TaskList";
+import TaskForm from "./components/TaskForm";
+
+import { GraphQLResult } from '@aws-amplify/api-graphql';
+import { ListTasksQuery } from './API';
 
 import "@aws-amplify/ui-react/styles.css";
 import theme from "./theme";
@@ -19,6 +26,25 @@ import logo from "./logo.svg";
 Amplify.configure(aws_exports);
 
 const App = () => {
+  const [tasks, setTasks] = useState<Task[]>([]);
+
+  const fetchTasks = async () => {
+    try {
+      const taskData = await API.graphql(graphqlOperation(listTasks)) as GraphQLResult<ListTasksQuery>;
+      console.log(taskData)
+      if (taskData.data && taskData.data.listTasks && taskData.data.listTasks.items) {
+        const tasks = taskData.data.listTasks.items as Task[];
+        setTasks(tasks);
+      }
+    } catch (error) {
+      console.error('Error fetching tasks', error);
+    }
+  };
+
+  useEffect(() => {
+    fetchTasks();
+  }, []);
+
   return (
     <AmplifyProvider theme={theme}>
       <Authenticator>
@@ -44,7 +70,8 @@ const App = () => {
                     <Text>Sign Out</Text>
                   </Button>
                 </View>
-                <TaskList />
+                <TaskForm onTaskCreated={fetchTasks} />
+                <TaskList tasks={tasks} />
               </>
             )}
 
