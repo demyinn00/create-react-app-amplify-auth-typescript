@@ -65,13 +65,13 @@ const App = () => {
             {user && (
               <>
                 <View width="100%">
-                  <Text>Hello {user.username}</Text>
+                  <Text>HELLO! {user.username}</Text>
                   <Button onClick={signOut}>
                     <Text>Sign Out</Text>
                   </Button>
+                  <TaskForm onTaskCreated={fetchTasks} />
+                  <TaskList tasks={tasks} />
                 </View>
-                <TaskForm onTaskCreated={fetchTasks} />
-                <TaskList tasks={tasks} />
               </>
             )}
 

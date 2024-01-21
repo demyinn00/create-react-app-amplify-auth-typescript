@@ -3,11 +3,11 @@ import { API } from 'aws-amplify';
 import { createTask } from '../graphql/mutations';
 
 // Add a prop type for the onTaskCreated callback
-interface TaskFormProps {
+type TaskFormProps = {
     onTaskCreated: () => void;
 }
 
-const TaskForm: React.FC<TaskFormProps> = ({ onTaskCreated }) => {
+const TaskForm = ({ onTaskCreated }: TaskFormProps) => {
     const [taskTitle, setTaskTitle] = useState('');
     const [taskDescription, setTaskDescription] = useState('');
 

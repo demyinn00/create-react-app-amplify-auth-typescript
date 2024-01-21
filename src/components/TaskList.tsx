@@ -1,11 +1,11 @@
 import React from 'react';
 import { Task } from '../API';
 
-interface TaskListProps {
+type TaskListProps = {
     tasks: Task[];
 }
 
-const TaskList: React.FC<TaskListProps> = ({ tasks }) => {
+const TaskList = ({ tasks }: TaskListProps) => {
     return (
         <div>
             <h3>Tasks</h3>
