@@ -12,12 +12,11 @@ import {
 import aws_exports from "./aws-exports";
 import { API, graphqlOperation } from "aws-amplify";
 import { listTasks } from "./graphql/queries";
-import { Task } from './API';
+import { Task, ListTasksQuery } from './API';
 import TaskList from "./components/TaskList";
 import TaskForm from "./components/TaskForm";
 
 import { GraphQLResult } from '@aws-amplify/api-graphql';
-import { ListTasksQuery } from './API';
 
 import "@aws-amplify/ui-react/styles.css";
 import theme from "./theme";
@@ -58,9 +57,9 @@ const App = () => {
             gap="1rem"
             textAlign="center"
           >
-            <View width="100%">
+            {/* <View width="100%">
               <Image src={logo} alt="logo" width={240} height={240} />
-            </View>
+            </View> */}
 
             {user && (
               <>
@@ -69,8 +68,8 @@ const App = () => {
                   <Button onClick={signOut}>
                     <Text>Sign Out</Text>
                   </Button>
-                  <TaskForm onTaskCreated={fetchTasks} />
                   <TaskList tasks={tasks} />
+                  <TaskForm onTaskCreated={fetchTasks} />
                 </View>
               </>
             )}

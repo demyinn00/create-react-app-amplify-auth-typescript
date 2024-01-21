@@ -1,6 +1,7 @@
 type Task @model {
   id: ID!
   title: String!
+  summary: String
   description: String
   status: TaskStatus!
   dueDate: AWSDate

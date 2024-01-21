@@ -15,6 +15,7 @@ export const createTask = /* GraphQL */ `mutation CreateTask(
   createTask(input: $input, condition: $condition) {
     id
     title
+    summary
     description
     status
     dueDate
@@ -34,6 +35,7 @@ export const updateTask = /* GraphQL */ `mutation UpdateTask(
   updateTask(input: $input, condition: $condition) {
     id
     title
+    summary
     description
     status
     dueDate
@@ -53,6 +55,7 @@ export const deleteTask = /* GraphQL */ `mutation DeleteTask(
   deleteTask(input: $input, condition: $condition) {
     id
     title
+    summary
     description
     status
     dueDate

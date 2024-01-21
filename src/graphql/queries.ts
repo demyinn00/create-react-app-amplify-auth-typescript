@@ -12,6 +12,7 @@ export const getTask = /* GraphQL */ `query GetTask($id: ID!) {
   getTask(id: $id) {
     id
     title
+    summary
     description
     status
     dueDate
@@ -30,6 +31,7 @@ export const listTasks = /* GraphQL */ `query ListTasks(
     items {
       id
       title
+      summary
       description
       status
       dueDate

@@ -12,6 +12,7 @@ export const onCreateTask = /* GraphQL */ `subscription OnCreateTask {
   onCreateTask {
     id
     title
+    summary
     description
     status
     dueDate
@@ -28,6 +29,7 @@ export const onUpdateTask = /* GraphQL */ `subscription OnUpdateTask {
   onUpdateTask {
     id
     title
+    summary
     description
     status
     dueDate
@@ -44,6 +46,7 @@ export const onDeleteTask = /* GraphQL */ `subscription OnDeleteTask {
   onDeleteTask {
     id
     title
+    summary
     description
     status
     dueDate
