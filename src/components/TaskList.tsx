@@ -12,7 +12,7 @@ const TaskList = ({ tasks }: TaskListProps) => {
             {tasks.map(task => (
                 <div key={task.id}>
                     <h4>{task.title}</h4>
-                    <p>{task.description}</p>
+                    <p>{task.summary}</p>
                 </div>
             ))}
         </div>
