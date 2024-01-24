@@ -1,5 +1,6 @@
 import React from 'react';
 import { Task } from '../API';
+import TaskCard from './TaskCard';
 
 type TaskListProps = {
     tasks: Task[];
@@ -10,10 +11,7 @@ const TaskList = ({ tasks }: TaskListProps) => {
         <div>
             <h3>Tasks</h3>
             {tasks.map(task => (
-                <div key={task.id}>
-                    <h4>{task.title}</h4>
-                    <p>{task.summary}</p>
-                </div>
+                <TaskCard key={task.id} task={task} />
             ))}
         </div>
     );

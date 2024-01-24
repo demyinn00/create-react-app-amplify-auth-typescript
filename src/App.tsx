@@ -15,10 +15,16 @@ import TaskForm from "./components/TaskForm";
 import "@aws-amplify/ui-react/styles.css";
 import theme from "./theme";
 import logo from "./logo.svg";
+import useTasks from "./hooks/useTask"
 
 Amplify.configure(aws_exports);
 
 const App = () => {
+  const { tasks, addTask } = useTasks();
+  const [isFormVisible, setIsFormVisible] = useState(false);
+
+  const toggleFormVisibility = () => setIsFormVisible(!isFormVisible);
+
   return (
     <AmplifyProvider theme={theme}>
       <Authenticator>
@@ -43,8 +49,15 @@ const App = () => {
                   <Button onClick={signOut}>
                     <Text>Sign Out</Text>
                   </Button>
-                  {/* <TaskList tasks={tasks} />
-                  <TaskForm onTaskCreated={fetchTasks} /> */}
+                  <Button onClick={toggleFormVisibility}>
+                    + New Task
+                  </Button>
+                  <TaskForm 
+                    onTaskCreated={addTask}
+                    onClose={toggleFormVisibility}
+                    isVisible={isFormVisible}
+                  />
+                  <TaskList tasks={tasks} />
                 </View>
               </>
             )}
