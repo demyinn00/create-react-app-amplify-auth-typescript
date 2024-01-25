@@ -20,11 +20,7 @@ import useTasks from "./hooks/useTask"
 Amplify.configure(aws_exports);
 
 const App = () => {
-<<<<<<< HEAD
-  const { tasks, addTask } = useTasks();
-=======
   const { tasks, addTask, editTask, removeTask } = useTasks();
->>>>>>> 5e878c3 (Completed all CRUD operations;)
   const [isFormVisible, setIsFormVisible] = useState(false);
 
   const toggleFormVisibility = () => setIsFormVisible(!isFormVisible);
@@ -61,15 +57,11 @@ const App = () => {
                     onClose={toggleFormVisibility}
                     isVisible={isFormVisible}
                   />
-<<<<<<< HEAD
-                  <TaskList tasks={tasks} />
-=======
                   <TaskList 
                     tasks={tasks} 
                     onEditTask={editTask} 
                     onRemoveTask={removeTask}
-                    />
->>>>>>> 5e878c3 (Completed all CRUD operations;)
+                  />
                 </View>
               </>
             )}

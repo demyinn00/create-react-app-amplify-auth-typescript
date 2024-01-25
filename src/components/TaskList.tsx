@@ -1,24 +1,15 @@
-<<<<<<< HEAD
-import React from 'react';
-import { Task } from '../API';
-=======
 import React, { useState } from 'react';
 import { 
     Task,
     UpdateTaskInput,
     DeleteTaskInput
 } from '../API';
->>>>>>> 5e878c3 (Completed all CRUD operations;)
 import TaskCard from './TaskCard';
-import './styles/TaskCard.css'
+import './styles/TaskDetails.css'
+import TaskDetails from './TaskDetails';
 
 type TaskListProps = {
     tasks: Task[];
-<<<<<<< HEAD
-}
-
-const TaskList = ({ tasks }: TaskListProps) => {
-=======
     onEditTask: (updateDetails: UpdateTaskInput) => Promise<void>;
     onRemoveTask: (deleteDetails: DeleteTaskInput) => Promise<void>;
 }
@@ -37,16 +28,17 @@ const TaskList = ({ tasks, onEditTask, onRemoveTask }: TaskListProps) => {
         setSelectedTask(null);
     }
 
->>>>>>> 5e878c3 (Completed all CRUD operations;)
     return (
         <div>
             <h3>Tasks</h3>
             <div className="taskListContainer">
                 {tasks.map(task => (
-                    <TaskCard key={task.id} task={task} />
+                    <TaskCard 
+                        key={task.id} 
+                        task={task} 
+                        onTaskSelected={handleTaskSelected}
+                    />
                 ))}
-<<<<<<< HEAD
-=======
 
                 {/* { selectedTask && <TaskDetails task={selectedTask} /> } */}
                 {selectedTask && <TaskDetails 
@@ -56,7 +48,6 @@ const TaskList = ({ tasks, onEditTask, onRemoveTask }: TaskListProps) => {
                                     onClose={releaseSelectedTask} 
                                     isVisible={isFormVisible}
                                     />}
->>>>>>> 5e878c3 (Completed all CRUD operations;)
             </div>
         </div>
     );

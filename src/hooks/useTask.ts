@@ -46,7 +46,7 @@ const useTasks = () => {
         }
     };
 
-    const editTask = async (taskId: string, updateDetails: UpdateTaskInput) => {
+    const editTask = async (updateDetails: UpdateTaskInput) => {
         try {
             const updatedTask = await API.graphql({
                 query: updateTask,
@@ -59,7 +59,7 @@ const useTasks = () => {
         }
     };
 
-    const removeTask = async (taskId: string, deleteDetails: DeleteTaskInput) => {
+    const removeTask = async (deleteDetails: DeleteTaskInput) => {
         try {
             const deletedTask = await API.graphql({
                 query: deleteTask,
