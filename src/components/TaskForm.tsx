@@ -33,7 +33,7 @@ const TaskForm = ({ onTaskCreated, onClose, isVisible }: TaskFormProps) => {
         }
     };
 
-    if (isVisible) return null;
+    if (!isVisible) return null;
 
     return (
         <div className="modal-overlay" onClick={onClose}>

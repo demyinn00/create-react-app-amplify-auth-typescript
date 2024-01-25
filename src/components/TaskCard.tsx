@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Task } from '../API';
+import './styles/TaskCard.css'
 
 type TaskCardProps = {
     task: Task;
@@ -12,7 +13,7 @@ const TaskCard = ({ task }: TaskCardProps) => {
     }
 
     return (
-        <div key={task.id}>
+        <div key={task.id} className="taskCard">
             <h4>{task.title}</h4>
             <p>{task.summary}</p>
             <select value={status} onChange={handleStatusChange}>
